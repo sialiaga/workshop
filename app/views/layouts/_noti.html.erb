@@ -1,0 +1,17 @@
+<div class="container w-50">
+    <% if notice.present? %>
+    <div class="card bg-success text-white mb-3 text-center">
+      <div class="card-body">
+        <%= notice %>
+      </div>
+    </div>
+  <% end %>
+  
+  <% if alert.present? %>
+    <div class="card bg-warning mb-3 text-center">
+      <div class="card-body">
+        <%= alert %>
+      </div>
+    </div>
+  <% end %>
+</div>
