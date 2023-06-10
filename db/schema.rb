@@ -10,7 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_06_10_175447) do
+ActiveRecord::Schema[7.0].define(version: 2023_06_10_211756) do
+  create_table "hashtags", force: :cascade do |t|
+    t.string "name", default: "", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "tag", force: :cascade do |t|
+    t.integer "tweet_id"
+    t.integer "hashtag_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["hashtag_id"], name: "index_tag_on_hashtag_id"
+    t.index ["tweet_id"], name: "index_tag_on_tweet_id"
+  end
+
   create_table "tweets", force: :cascade do |t|
     t.string "body", default: "", null: false
     t.integer "user_id"
@@ -33,5 +48,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_10_175447) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "tag", "hashtags"
+  add_foreign_key "tag", "tweets"
   add_foreign_key "tweets", "users"
 end
