@@ -1,4 +1,5 @@
-<div class="container">
-    <h1>Tweets</h1>
+<div class="container w-50">
+    <h1>Timeline</h1>
+    <%= link_to "Add Tweet", new_tweet_path, class: "btn btn-success btn-lg" %> 
     <%= render partial: 'tweet', collection: @tweets %>
 </div>
