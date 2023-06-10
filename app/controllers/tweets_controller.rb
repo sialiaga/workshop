@@ -11,6 +11,8 @@ class TweetsController < ApplicationController
         @tweet=Tweet.new
     end
 
+
+
     def create 
         tweet=Tweet.new(tweet_params)
         tweet.user = current_user
@@ -29,6 +31,6 @@ class TweetsController < ApplicationController
 
     private 
     def tweet_params 
-        params.require(:tweet).permit(:body)
+        params.require(:tweet).permit(:body, :hashtags)
     end
 end
